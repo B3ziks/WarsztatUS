@@ -1,0 +1,23 @@
+{%extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{%block main%}
+<form method="post" action="" enctype="multipart/form-data">
+	{% csrf_token %}
+	<h1>Edycja pracownika</h1>
+	<div>
+		<table class="table table-hover">
+		{{form}}
+		</table>
+	</div>
+	<div>
+		<button class="btn btn-primary btn-sm" type="submit">
+			<i class="fas fa-save"></i> Zapisz
+		</button>
+		<a href="{%url "pricing-list"%}" class="btn btn-primary btn-sm">
+			<i class="fas fa-arrow-circle-left"></i> Anuluj
+		</a>
+	</div>
+</form>	
+{%endblock%}

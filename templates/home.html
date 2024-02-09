@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<link rel="icon" href="{% static "img/car.png" %}"  sizes="16x16" type="image/png">	
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<title>Warsztat SerwisUS</title>
+	
+	<meta name="description" content="Stworzę dla Ciebie wyjątkową stronę www! Zatrudnij programistę webowego: PHP, JavaScript, HTML, CSS, MySQL, WordPress, Joomla, Drupal." />
+	<meta name="keywords" content="zamów, stronę, tworzenie, www, programista, portfolio, php, javascript, html, css, WordPress, Joomla, Drupal" />
+	
+	<link rel="stylesheet" href="{% static "css/home/style.css" %}">
+	<link rel="stylesheet" href="{% static "css/home/fontello.css" %}" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=Lato|Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	
+
+	<script src="{% static "js/home/timer.js" %}"></script>
+		
+</head>
+
+<body onload="odliczanie();">
+	
+	<div id="container">
+	
+		<div class="rectangle">
+			<div id="logo">Warsztat Samochodowy</div>
+			<div id="zegar">12:00:00</div>
+			<div style="padding-top:10%">
+			{% if user.is_authenticated %}
+			<i class="fas fa-user-check"></i>Zalogowany użytkownik: {{ user.username }} 
+			{% endif %}
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		
+		<div class="square">
+			<div class="tile1">
+			{% if user.is_authenticated %}
+				<a href="{% url "logout" %}"class="tilelink"><i class="icon-user"></i><br>Wyloguj</a>
+			{% else %}
+				<a href="{% url "login" %}" class="tilelink"><i class="icon-user"></i><br>Logowanie</a>
+				{% endif %}
+			</div>
+				<div class="tile1">
+				{% if request.user.is_staff %}
+					<a href="{%url "employee-list" %}" class="tilelink"><i class="icon-user"></i><br>Administracja</a>
+				{% elif user.is_authenticated %}
+					<a href="{%url "account" %}" class="tilelink"><i style="margin-top:15%" class="fas fa-user-cog fa-3x"></i><br>Moje Konto</a>
+				{% else %}
+					<a href="{%url "signup" %}" class="tilelink"><i class="icon-user"></i><br>Rejestracja</a>
+				{% endif %}
+				</div>
+			
+			<div style="clear:both;"></div>
+			
+			<div class="tile2">
+				<a href="{%url "pricing-list" %}" class="tilelink"><i class="icon-laptop"></i><br />Nasza oferta</a>
+			</div>
+			<div class="tile3">
+				<a href="{%url "contact" %}" class="tilelink"><i class="icon-mail"></i><br />Kontakt</a>
+			</div>
+			<div style="clear:both;"></div>
+			
+			<div class="tile4">
+				<i>"Z tragedii rodzi się piękno. Spójrz tylko, ile doświadczeń kryje się w tych niezwykłych bruzdach."</i> – Leisa Rayven
+			</div>
+		</div>
+		<div class="square">
+			<div class="tile5">
+				<b>Witamy w naszym warszatcie SerwisUS!</b><br /><br />
+				Jesteśmy wschodzącą firmą stawiającą na rozwój przy użyciu nowoczesnych technologii. <br /><br /> Na naszym portalu możesz w wygodny sposób wybrać interesujące Cię usługi, dzięki czemu nasz system wyświetli Ci przybliżony koszt wykonania usługi, a nasi specjaliście w profesjolany sposób zadbają o Twój pojazd!				
+			</div>
+			<div class="yt">
+				<a href="http://youtube.com" target="_blank" class="sociallink"><i class="icon-youtube"></i></a>
+			</div>
+			<div class="fb">
+				<a href="http://facebook.com" target="_blank" class="sociallink"><i class="icon-facebook"></i></a>
+			</div>
+			<div class="gplus">
+				<a href="http://plus.google.com" target="_blank" class="sociallink"><i class="icon-gplus"></i></a>
+			</div>
+			<div class="tw">
+				<a href="http://twitter.com" target="_blank" class="sociallink"><i class="icon-twitter"></i></a>			
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div style="clear: both;"></div>
+		
+		<div class="rectangle">2022 &copy;  Kamil Jagiełko <i class="icon-mail-alt"></i></div>
+	
+	</div>
+	
+</body>
+</html>

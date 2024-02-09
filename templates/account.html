@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h3 class="title">Dane Uzytkownika:</h3>
+<table>
+	<tr>
+		<th class="col-2">Imie:</th>
+			<td>
+        		{{user.first_name}}
+        	</td>
+	</tr>
+	<tr>
+		<th class="col-2">Nazwisko:</th>
+			<td>
+        		{{user.last_name}}
+        	</td>
+	</tr>
+	<tr>
+		<th class="col-2">Login:</th>
+			<td>
+        		{{user.username}}
+        	</td>
+    </tr>
+	<tr>
+		<th class="col-2">E-mail:</th>
+			<td>
+        		{{user.email}}
+        	</td>
+	</tr>    
+</table>
+<a href="{% url "pchange" %}">Zmiana hasła?</a> 
+<div class="content">
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% autoescape off %}  
+Witaj {{ user.username }},  
+
+Dziękujemy za zamówienie usług w naszym warsztacie!
+Imię: {{ user.first_name }}
+Nazwisko:{{ user.last_name }}
+E-mail: {{ user.email }}
+
+<span id="uslugi"></span>
+Lącznie do zapłaty:<span id="zaplata"></span>zł
+
+
+
+{% endautoescape %}  
+<script>
+let uslugi =  localStorage.getItem("uslugi"); 
+let zaplata = localStorage.getItem("lacznie");
+document.getElementById("zaplata").innerHTML = zaplata
+document.getElementById("uslugi").innerHTML = uslugi
+
+</script>
+</table>

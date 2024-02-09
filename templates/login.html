@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h3 class="title">Logowanie</h3>
+<div class="content">
+      <form action="{% block url %}{% endblock %}" method="post">
+          {% csrf_token %}
+               <table>
+         {{ form }}
+            </table>
+             <div class="btn-group" role="group">
+                      <button class="btn btn-primary btn-sm"
+                                       type="submit">
+                          <i class="fas fa-sign-in"></i> Zaloguj
+                   </button>
+                   <a class="btn btn-secondary btn-sm"
+                               href="{% url "home" %}">
+                              <i class="fas fa-undo"></i> Anuluj
+                   </a>
+                </div>
+   </form>
+     <div class="mt-2">
+              Nie masz konta? <a href="{%url "signup" %}">Zarejestruj się!</a>
+      </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{%block main %}
+		<h1>Lista Pracowników {%include "snippet.html" %}</h1>
+		<div>
+			{% if user.is_authenticated %}
+				<i class="fas fa-user-check"></i>Zalogowany użytkownik: {{ user.username }}
+				<a href="{% url "logout" %}">
+				<i class="fas fa-sign-out"></i> Wyloguj
+				</a>
+			{% else %}
+				<a href="{% url "login" %}">
+				<i class="fas fa-sign-in"></i> Zaloguj
+				</a>
+				<div class="mt-1 small">
+				Nie masz konta? <a href="{%url "signup" %}">Zarejestruj się!</a>
+			{% endif %}
+		</div>	
+		<div>
+		<a href="{%url "home"%}" class="btn btn-primary btn-sm">
+		<i class="fas fa-arrow-circle-left"></i> Powrót na stronę główną</a>
+		{% if user.is_authenticated %}
+		<a href="{% url "employee-create" %}" class="btn btn-primary btn-sm {% if not perms.employee.add_employee %} disabled {% endif %}" title="Podgląd"><i class="fas fa-user-plus"></i> Dodaj Użytkownika</a>
+		{% endif %}
+		</div>
+		<br>
+		<div>
+			<form method="post" action="">
+				{% csrf_token%}
+				{{form}} <!-- .as_p .as_ul -->
+				<!-- <label for="mySubmit" title="szukaj" class="btn btn-primary"><i class="fas fa-search"></i></label> -->
+				<button type="submit" id="mySubmit" class="btn btn-primary">
+					<i class="fas fa-search">
+					</i>
+				</button>
+			</form>
+		</div>
+    	<table class="table table-striped">
+    		<thead>
+    			    			<tr>
+    				<th class="col-3 col-lg-2">Zdjęcie</th>
+    				<th class="col-1 col-lg-1">Id</th>
+    				<th class="col-2 col-lg-1">Imię</th>
+    				<th class="col-2 col-lg-2">Nazwisko</th>
+    				<th class="col-3 col-lg-3">Data urodzenia</th>
+    				<th class="col-1 col-lg-1">Stanowisko</th>
+    				<th class="col-1 col-lg-1">Status</th>
+    				<th class="col-1 col-lg-1">Szczegóły</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			{% for employee in employees %}
+    			<tr>
+    				<td>{% if employee.image %}
+    					{% thumbnail employee.image "100x100" quality=96 crop="center" as small %}
+    					<img src="{{small.url}}">
+    					{% endthumbnail %}
+    					{% else %}
+    					<img src="{% static "img/default_avatar.png" %}" alt="anonymous" height="100px" width="100px">
+    					{% endif %}</td>
+    				<td>{{employee.id}}</td>
+    				<td>{{employee.first_name}}</td>
+    				<td>{{employee.last_name}}</td>
+    				<td>{{employee.birth_date|date:"Y-m-d"}}</td>
+    				<td>{{employee.position|default:""}}</td>
+    				<td>{{employee.status_name|default:""}}</td>
+    				<td>
+    					<div class="btn-group">
+    					    {% if user.is_authenticated %} 
+    						<a href="{%url "employee-details" employee.id%}" class="btn btn-primary" title="Podgląd"><i class="fas fa-eye"></i></a>
+    						<a href="{% url "employee-update" employee.id%}" class="btn btn-primary {% if not perms.employee.change_employee %} disabled {% endif %}" title="Edytuj"><i class="fas fa-edit"></i></a>
+    						<a href="{%url "employee-delete" employee.id%}" class="btn btn-primary del {% if not perms.employee.delete_employee %} disabled {% endif %}" title="Usuń"><i class="far fa-trash-alt"></i></a>
+    						{% endif %}
+    					</div>
+    				</td>
+    			</tr>
+    			
+    		{% endfor %}
+    		</tbody>
+    		</table>
+
+		</a>
+{% endblock %}

@@ -1,0 +1,59 @@
+{%extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{%block main%}
+		<h1>Szczegóły dotyczące pracownika</h1>
+        <table border = '3px solid black' cellpadding='5px' class="table table-striped" style="text-align:center">
+        	<tr>
+        		<th class="col-4 col-lg-2">Zdjęcie</th>
+        		<td>
+        			{% if employee.image %}
+        				{% thumbnail employee.image "300x300" quality=96 crop="center" as small %}
+        				<img src="{{small.url}}">
+        				{% endthumbnail %}
+        			{% else %}
+        				<img src="{% static "img/default_avatar.png" %}" alt="anonymous" height="300px" width="300px">
+        			{% endif %}
+        		</td>
+        	</tr>
+        	</tr>
+        		<th class="col-1">Id</th>
+        		<td>
+        			{{employee.id}}
+        		</td>
+        	</tr>
+        	<tr>
+        		<th class="col-1">Imię</th>
+        		<td>
+        			{{employee.first_name}}
+        		</td>
+        	</tr>
+        	<tr>
+        		<th class="col-1">Nazwisko</th>
+        		<td>
+        			{{employee.last_name}}
+        		</td>
+        	</tr>
+        	<tr>
+        		<th class="col-2">Data urodzenia</th>
+        		<td>
+        			{{employee.birth_date|date:"Y-m-d"}}
+        		</td>
+        	</tr>
+        	<tr>
+        		<th class="col-3">Opis</th>
+        		<td>
+        			{{employee.description}}
+        		</td>
+        	
+        	</tr>
+        	<tr>
+        		<td colspan="2">
+        			<a href="{%url "employee-list"%}" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> Powrót do listy</a>
+        		</td>
+        		<td>
+        		</td>
+        	</tr>
+        </table>
+{%endblock%}

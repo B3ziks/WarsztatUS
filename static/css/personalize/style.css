@@ -1,0 +1,378 @@
+html{
+background-image: url("/static/img/background_image.jpg");
+}
+
+body{
+opacity:0.8;
+color:black;
+max-width:800px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.navbar {
+width: 100%;
+background-color: #555;
+overflow: auto;
+}
+
+
+
+.navbar a {
+float: left;
+padding: 12px;
+color: white;
+text-decoration: none;
+font-size: 17px;
+width: 25%; /* Four links of equal widths */
+text-align: center;
+}
+
+
+
+.navbar a:hover {
+background-color: #000;
+}
+
+
+
+.navbar a.active {
+background-color: #202020;
+}
+#baner{
+	width:100%;
+	height:20%;
+  background-image: url("/static/img/baner.jpg");
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#logo{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-left:2%;
+
+}
+#logo2{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+
+}
+#nazwa{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+
+}
+
+ #silnik1{
+    display: none;
+    min-width: 330px;
+    min-height: 380px;
+   /* background-color: yellow;*/
+    position: absolute;
+    top: 68px;
+    left: 213px;
+}
+#silnik2{
+	display:none;
+    min-width: 120px;
+    min-height: 50px;
+    /*background-color: red;*/
+    position: absolute;
+    top: 176px;
+    left: 367px;
+}
+#silnik3{
+	display:none;
+    min-width: 140px;
+    min-height: 200px;
+   /* background-color: green;*/
+    position: absolute;
+    top: 201px;
+    left: 195px;
+}
+#kolo1{
+   /* background-color:yellow;*/
+    display: none;
+    min-width: 164px;
+    min-height: 160px;
+    position: absolute;
+    top: 175px;
+    left: 303px;
+    z-index: 70;
+}
+#kolo2{
+	/*background-color: green;*/
+    display: none;
+    min-width: 356px;
+    min-height: 339px;
+    position: absolute;
+    top: 87px;
+    left: 209px;
+}
+#kolo3{
+	/*background-color:red;*/
+    display: none;
+    min-width: 50px;
+    min-height: 150px;
+    position: absolute;
+	top: 171px;
+    left: 290px;
+    z-index: 100;
+}
+.tekst1{
+	font-size:big;
+	font-weight:bold;
+}
+
+.przekroj{
+	width:100%;
+	height:60%;
+	position: relative;
+}
+#zdjcar{
+	display:none;
+	max-width:100%;
+	max-height:80%;
+	margin-left: 13%;
+    padding-top: 10%;
+}
+#zdjmotor{
+	display:none;
+	max-width:100%;
+	max-height:80%;
+	margin-left: 13%;
+    padding-top: 10%;
+}
+#zdjinside{
+	display:none;
+	max-width:100%;
+	max-height:80%;
+	margin-left: 13%;
+    padding-top: 10%;
+}
+#zdjfront{
+	display:none;
+	max-width:100%;
+	max-height:80%;
+	margin-left: 13%;
+    padding-top: 10%;
+}
+#zdjwheel{
+	display:none;
+	max-width:80%;
+    max-height: 80%;
+    margin-left: 13%;
+    padding-top: 10%;
+}
+#zdjengine{
+	display:none;
+	max-width:80%;
+    max-height: 80%;
+    margin-left: 15%;
+    padding-top: 10%;
+}
+#zdjback{
+	display:none;
+	max-width:80%;
+    max-height: 80%;
+    margin-left: 29%;
+    padding-top: 17%;
+}
+.swiatlap{
+	display:none;
+    min-width: 119px;
+    min-height: 75px;
+    /*background-color:orange;*/
+	
+}
+.swiatlat{
+	display:none;
+    min-width: 80px;
+    min-height: 33px;
+    /*background-color:orange;*/
+	
+}
+#swiatlop1{
+	display:none;
+    position: absolute;
+    top: 286px;
+    left: 160px;
+}
+#swiatlop2{
+	display:none;
+    position: absolute;
+	top: 288px;
+    left: 578px;
+}
+#swiatlot1{
+	display:none;
+    position: absolute;
+    top: 191px;
+    left: 256px;
+}
+#swiatlot2{
+	display:none;
+    position: absolute;
+    top: 189px;
+    left: 461px;
+}
+.kierunkowskazyp{
+	display:none;
+    min-width: 40px;
+    min-height: 78px;
+    /*background-color:blue;*/
+	
+}
+.kierunkowskazyt{
+	display:none;
+    min-width: 40px;
+    min-height: 37px;
+    /*background-color:blue;*/
+	
+}
+#kierunkowskaz1{
+	display:none;
+    position: absolute;
+    top: 273px;
+    left: 696px;
+}
+#kierunkowskaz2{
+	display:none;
+    position: absolute;
+top: 273px;
+    left: 122px;
+}
+#kierunkowskaz3{
+	display:none;
+    position: absolute;
+    top: 186px;
+    left: 536px;
+}
+#kierunkowskaz4{
+	display:none;
+    position: absolute;
+    top: 187px;
+    left: 223px;
+}
+.kokpit{
+	display:none;	
+    min-width: 182px;
+    min-height: 122px;
+    /*background-color: pink;*/
+    position: absolute;
+    top: 131px;
+    left: 297px;
+}
+.szyba{
+	display:none;
+    min-width: 336px;
+    min-height: 101px;
+    /*background-color: pink;*/
+    position: absolute;
+    top: 139px;
+    left: 211px;
+}
+#kierownica{
+display: none;
+    min-width: 120px;
+    min-height: 108px;
+    /*background-color: blue;*/
+    position: absolute;
+    top: 235px;
+    left: 205px;
+    z-index: 100;
+}
+#maska{
+	display:none;
+	min-width: 374px;
+    min-height: 173px;
+    /*background-color: blue;*/
+    position: absolute;
+    top: 101px;
+    left: 244px;
+}
+#hamulec{
+	display:none;
+    min-width: 80px;
+    min-height: 30px;
+   /*background-color: green;*/
+    position: absolute;
+	top: 334px;
+    left: 273px;
+    z-index:100;
+}
+#radio{
+	display:none;
+    min-width: 80px;
+    min-height: 40px;
+    /*background-color: green;*/
+    position: absolute;
+    top: 289px;
+    left: 339px;
+    z-index:100;
+}
+#drzwi{
+	display:none;
+    min-width: 129px;
+    min-height: 141px;
+    /*background-color: green;*/
+    position: absolute;
+    top: 266px;
+    left: 530px;
+}
+#drzwi2{
+	display:none;
+    min-width: 129px;
+    min-height: 141px;
+    /*background-color: green;*/
+    position: absolute;
+    top: 266px;
+    left: 104px;
+}
+#lusterko1{
+	display:none;
+    min-width: 80px;
+    min-height: 40px;
+    /*background-color: yellow;*/
+    position: absolute;
+    top: 228px;
+    left: 106px;
+    z-index:100;
+
+}
+#lusterko2{
+	display:none;
+    min-width: 80px;
+    min-height: 40px;
+    /*background-color: blue;*/
+    position: absolute;
+    top: 231px;
+    left: 557px;
+    z-index:100;
+}
+#bieg1{
+	display:none;
+    min-width: 80px;
+    min-height: 30px;
+    /*background-color: green;*/
+    position: absolute;
+    top: 313px;
+    left: 251px;
+    z-index:100;
+}
+#bieg2{
+	display:none;
+    min-width: 80px;
+    min-height: 30px;
+    /*background-color: green;*/
+    position: absolute;
+    top: 313px;
+    left: 251px;
+    z-index:100;
+}
+
+ 

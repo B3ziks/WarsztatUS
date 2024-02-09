@@ -1,0 +1,1011 @@
+
+{% load static %}
+<html>
+
+	<head>
+		<link rel="icon" href="{% static "img/car.png" %}"  sizes="16x16" type="image/png">	
+		<title>Warsztat SerwisUS</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="{% static "css/personalize/style.css" %}">
+	</head>
+	
+	<body>
+	
+	<!-- -->
+	<section>
+		{%block header %}
+		<div  id="baner">
+		 	<div id="logo">
+		 		<img src="{% static "img/serwisus.png" %}" alt="logo" width="100%" height="100%">
+		 	</div>
+		 	<div id="nazwa">
+		 		<img src="{% static "img/nazwa.png" %}" alt="SerwisUS" width="100%" height="100%">
+		 	</div>
+		    <div id="logo2">
+		 	    <img src="{% static "img/serwisus2.png" %}" alt="logo" width="100%" height="100%">
+		 	</div>	
+		 </div>
+		 
+		<div class="navbar">
+			<a href="{%url "home"%}">Strona Główna</a>
+			<a href="{%url "pricing-list"%}">Oferta</a>
+			<a href="#">Kontakt</a>
+			<a href="{%url "login"%}">Login</a>
+		</div>
+		 
+		{%endblock%}
+	</section>
+	<!-- -->
+	<section>
+{% block main %}
+<script src="{% static "js/pricing/custom.js" %}">
+</script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"> 
+</script>
+<script>
+var z
+function myFunction2(){
+	z = document.getElementById("id2").value;
+	
+	if (z == "0") 
+	{
+		document.getElementById("o2").disabled = true;
+		document.getElementById("o3").disabled = true;
+		document.getElementById("o4").disabled = true;
+		document.getElementById("o5").disabled = true;
+		document.getElementById("o6").disabled = true;
+
+	}
+	if (z == "1") 
+	{
+		document.getElementById("o2").disabled = false;
+		document.getElementById("o3").disabled = false;
+		document.getElementById("o4").disabled = false;
+		document.getElementById("o5").disabled = false;
+		document.getElementById("o6").disabled = false;
+		document.getElementById("zdjmotor").style.display = "none";
+		document.getElementById("zdjcar").style.display = "none";
+	}
+	if (z == "2") 
+	{
+		document.getElementById("o2").disabled = false;
+		document.getElementById("o3").disabled = false;
+		document.getElementById("o4").disabled = false;
+		document.getElementById("o5").disabled = false;
+		document.getElementById("o6").disabled = false;
+
+	}
+	if (z == "3") 
+	{
+		document.getElementById("o2").disabled = false;
+		document.getElementById("o3").disabled = false;
+		document.getElementById("o4").disabled = false;
+		document.getElementById("o5").disabled = false;
+		document.getElementById("o6").disabled = false;
+
+	}
+	if (z == "4") 
+	{
+		document.getElementById("o2").disabled = false;
+		document.getElementById("o3").disabled = false;
+		document.getElementById("o4").disabled = false;
+		document.getElementById("o5").disabled = false;
+		document.getElementById("o6").disabled = false;
+
+	}
+
+
+}
+
+</script>
+<h3 class="title">Personalizacja Zamówienia</h3>
+	<a href="{%url "home"%}"  class="btn btn-primary btn-sm">
+	<i class="fas fa-arrow-circle-left"></i> Powrót na stronę główną </a>
+	<a href="{%url "pricing-list"%}"  class="btn btn-primary btn-sm">
+	<i class="fas fa-arrow-circle-left"></i> Powrót do listy usług </a>
+
+
+	<select id="id2" onchange="myFunction2()">
+		<option value="0">Rodzaj Pojazdu</option>
+		<option value="1">Motocykl</option>
+		<option value="2">Chopper</option>
+		<option value="3">Samochód Osobowy</option>
+		<option value="4">Samochód Ciężarowy</option>
+
+	</select>
+	
+	<select id="id1" class=""onchange="myFunction1()">>
+		<option value="1">Element Pojazdu</option>
+		<option id="o2" value="2" disabled>Koło</option>
+		<option id="o3" value="3" disabled>Silnik</option>
+		<option id="o4" value="4" disabled>Przód</option>
+		<option id="o5" value="5" disabled>Tył</option>
+		<option id="o6" value="6" disabled>Wewnątrz</option>
+	</select>
+<div class="content">
+	<div class="przekroj" onclick="reply_click()">
+		<img src="{% static "img/przekroj.png" %}" id="zdjcar"/>
+		<img src="{% static "img/motocykl.png" %}" id="zdjmotor"/>
+		<img src="{% static "img/koło.jpg" %}" id="zdjwheel"/>
+		<img src="{% static "img/silnik.png" %}" id="zdjengine"/>
+		<img src="{% static "img/srodek.jpg" %}" id="zdjinside"/>
+		<img src="{% static "img/przod.png" %}" id="zdjfront"/>
+		<img src="{% static "img/tył.png" %}" id="zdjback"/>
+		<div class="szyba" id="szybap" title="Wymiana Przedniej Szyby"></div>
+		<div id="silnik1" title="Wymiana Silnika"></div>
+		<div id="silnik2" title="Wymiana Świec Zapłonowych"></div>
+		<div id="silnik3" title="Wymiana Pasków Napędowych"></div>
+		<div id="kolo1" title="Wymiana Kół"></div>
+		<div id="kolo2" title="Wymiana Opon"></div>
+		<div id="kolo3" title="Wymiana Klocka Hamulcowego"></div>
+		<div class="swiatlap" id="swiatlop1" title="Wymiana Świateł Przednich"></div>
+		<div class="swiatlap" id="swiatlop2" title="Wymiana Świateł Przednich"></div>
+		<div class="kierunkowskazyp" id="kierunkowskaz1" title="Wymiana Kierunkowskazów"></div>
+		<div class="kierunkowskazyp" id="kierunkowskaz2" title="Wymiana Kierunkowskazów"></div>
+		<div class="swiatlat" id="swiatlot1" title="Wymiana Świateł Tylnych"></div>
+		<div class="swiatlat" id="swiatlot2" title="Wymiana Świateł Tylnych"></div>
+		<div class="kierunkowskazyt" id="kierunkowskaz3" title="Wymiana Kierunkowskazów"></div>
+		<div class="kierunkowskazyt" id="kierunkowskaz4" title="Wymiana Kierunkowskazów"></div>
+		<div class="kokpit" id="kokpit" title="kokpit"></div>
+		<div id="kierownica" title="Wymiana Kierownicy"></div>
+		<div id="hamulec" title="Wymiana Linki Hamulca Ręcznego"></div>
+		<div id="radio" title="Montaż Radia"></div>
+		<div id="drzwi" title="Wymiana Drzwi"></div>
+		<div id="drzwi2" title="Wymiana Drzwi"></div>
+		<div id="lusterko1" title="Wymiana Lusterek Zewnętrznych"></div>
+		<div id="lusterko2" title="Wymiana Lusterek Zewnętrznych"></div>
+		<div id="maska" title="Wymiana Maski Silnika"></div>
+		<div id="bieg1" title="Wymiana Skrzyni Biegów"></div>
+		<div id="bieg2" title="Wymiana Drążka Zmiany Biegów"></div>
+		
+	</div>
+	<div id="ptest"onchange="testfunct()"><b>Wybrane usługi:</b></div>
+
+	<div id="ptest2" onchange="testfunct()"><b>Cena wybranych usług:</b></div>
+	<div onchange="testfunct()"><b>Łącznie do zapłaty: </b><span id="ptest3">0</span>zł
+	</div>
+<script>
+var lacznie=[]
+
+
+var a = []
+{% for pricing in pricings %}
+	var b={{pricing.price}}
+	a.push(b)
+{% endfor%}
+	console.log(a[1])
+	
+	
+window.addEventListener('load', function () {
+var element = document.getElementById('ptest');
+var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+var observer = new MutationObserver(testfunct);
+observer.observe(element, {
+childList: true
+});
+
+
+
+
+function testfunct()
+	{
+	//
+	
+	//czy jest juz zaznaczone
+	var pp=document.getElementById("ptest").innerHTML;
+	var s1=document.getElementById("silnik1").style.display;
+	var s2=document.getElementById("silnik2").style.display;
+	var s3=document.getElementById("silnik3").style.display;
+	var k1=document.getElementById("kolo1").style.display;
+	var k2=document.getElementById("kolo2").style.display;
+	var k3=document.getElementById("kolo3").style.display;
+	var p1=document.getElementById("maska").style.display;
+	var p21=document.getElementById("swiatlop1").style.display;
+	var p22=document.getElementById("swiatlop2").style.display;
+	var p31=document.getElementById("kierunkowskaz1").style.display;
+	var p32=document.getElementById("kierunkowskaz2").style.display;
+	var t21=document.getElementById("swiatlot1").style.display;
+	var t22=document.getElementById("swiatlot2").style.display;
+	var t31=document.getElementById("kierunkowskaz3").style.display;
+	var t32=document.getElementById("kierunkowskaz4").style.display;
+	var ps=document.getElementById("szybap").style.display;
+	var kier=document.getElementById("kierownica").style.display;
+	var radio=document.getElementById("radio").style.display;
+	var hamu=document.getElementById("hamulec").style.display;
+	var dr11=document.getElementById("drzwi").style.display;
+	var dr12=document.getElementById("drzwi2").style.display;
+	var lus11=document.getElementById("lusterko1").style.display;
+	var lus12=document.getElementById("lusterko2").style.display;
+	//czy sie znajduje//
+	var result1 = pp.includes("Wymiana Silnika");
+	var result2 = pp.includes("Wymiana Świec Zapłonowych");
+	var result3 = pp.includes("Wymiana Pasków Napędowych");
+	var result4 = pp.includes("Wymiana Kół");
+	var result5 = pp.includes("Wymiana Opon");
+	var result6 = pp.includes("Wymiana Klocka Hamulcowego");
+	var result7 = pp.includes("Wymiana Maski Silnika");
+	var result8 = pp.includes("Wymiana Świateł Przednich");
+	var result9 = pp.includes("Wymiana Kierunkowskazów");
+	var result10 = pp.includes("Wymiana Świateł Tylnych");
+	var result11 = pp.includes("Wymiana Przedniej Szyby");
+	var result12 = pp.includes("Wymiana Kierownicy");
+	var result13 = pp.includes("Montaż Radia");
+	var result14 = pp.includes("Wymiana Linki Hamulca Ręcznego");
+	var result15 = pp.includes("Wymiana Drzwi");
+	var result16 = pp.includes("Wymiana Lusterek Zewnętrznych");
+	
+	
+		
+	if (result1==true && s1=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[40]+"zł"	
+			document.getElementById("silnik1").style.display="none";
+			lacznie.push(a[40])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[41]+"zł"		
+			document.getElementById("silnik1").style.display="none";
+			lacznie.push(a[41])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[42]+"zł"		
+			document.getElementById("silnik1").style.display="none";
+			lacznie.push(a[42])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[43]+"zł"	
+			document.getElementById("silnik1").style.display="none";
+			lacznie.push(a[43])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	if (result2==true && s2=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[52]+"zł"	
+			document.getElementById("silnik2").style.display="none";
+			lacznie.push(a[52])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[53]+"zł"	
+			document.getElementById("silnik2").style.display="none";
+			lacznie.push(a[53])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[54]+"zł"	
+			document.getElementById("silnik2").style.display="none";
+			lacznie.push(a[54])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[55]+"zł"	
+			document.getElementById("silnik2").style.display="none";
+			lacznie.push(a[55])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	if (result3==true && s3=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[48]+"zł"		
+			document.getElementById("silnik3").style.display="none";
+			lacznie.push(a[48])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[49]+"zł"		
+			document.getElementById("silnik3").style.display="none";
+			lacznie.push(a[49])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[50]+"zł"		
+			document.getElementById("silnik3").style.display="none";
+			lacznie.push(a[50])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[51]+"zł"		
+			document.getElementById("silnik3").style.display="none";
+			lacznie.push(a[51])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	if (result4==true && k1=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[4]+"zł"		
+			document.getElementById("kolo1").style.display="none";
+			lacznie.push(a[4])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[5]+"zł"		
+			document.getElementById("kolo1").style.display="none";
+			lacznie.push(a[5])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[6]+"zł"		
+			document.getElementById("kolo1").style.display="none";
+			lacznie.push(a[6])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[7]+"zł"		
+			document.getElementById("kolo1").style.display="none";
+			lacznie.push(a[7])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	if (result5==true && k2=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[0]+"zł"		
+			document.getElementById("kolo2").style.display="none";
+			lacznie.push(a[0])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[2]+"zł"		
+			document.getElementById("kolo2").style.display="none";
+			lacznie.push(a[2])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[1]+"zł"		
+			document.getElementById("kolo2").style.display="none";
+			lacznie.push(a[1])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[3]+"zł"		
+			document.getElementById("kolo2").style.display="none";
+			lacznie.push(a[3])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	if (result6==true && k3=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[36]+"zł"		
+			document.getElementById("kolo3").style.display="none";
+			lacznie.push(a[36])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[37]+"zł"		
+			document.getElementById("kolo3").style.display="none";
+			lacznie.push(a[37])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[38]+"zł"		
+			document.getElementById("kolo3").style.display="none";
+			lacznie.push(a[38])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[39]+"zł"		
+			document.getElementById("kolo3").style.display="none";
+			lacznie.push(a[39])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	if (result7==true && p1=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"
+			document.getElementById("maska").style.display="none";
+
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"	
+			document.getElementById("maska").style.display="none";
+
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[55]+"zł"		
+			document.getElementById("maska").style.display="none";
+			lacznie.push(a[55])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[56]+"zł"		
+			document.getElementById("maska").style.display="none";
+			lacznie.push(a[56])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	if (result8==true)
+	{
+		if (p21=="block" || p22=="block")
+		{
+			if(z==1){
+				document.getElementById("ptest2").innerHTML+=","+a[8]+"zł"		
+				document.getElementById("swiatlop1").style.display="none";
+				document.getElementById("swiatlop2").style.display="none";
+				lacznie.push(a[8])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==2){
+				document.getElementById("ptest2").innerHTML+=","+a[9]+"zł"		
+				document.getElementById("swiatlop1").style.display="none";
+				document.getElementById("swiatlop2").style.display="none";
+				lacznie.push(a[9])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==3){
+				document.getElementById("ptest2").innerHTML+=","+a[10]+"zł"		
+				document.getElementById("swiatlop1").style.display="none";
+				document.getElementById("swiatlop2").style.display="none";
+				lacznie.push(a[10])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==4){
+				document.getElementById("ptest2").innerHTML+=","+a[11]+"zł"		
+				document.getElementById("swiatlop1").style.display="none";
+				document.getElementById("swiatlop2").style.display="none";
+				lacznie.push(a[11])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}
+		}	
+	}
+	if (result9==true)
+	{
+		if (p31=="block" || p32=="block")
+		{
+			if(z==1){
+				document.getElementById("ptest2").innerHTML+=","+a[16]+"zł"		
+				document.getElementById("kierunkowskaz1").style.display="none";
+				document.getElementById("kierunkowskaz2").style.display="none";
+				lacznie.push(a[16])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==2){
+				document.getElementById("ptest2").innerHTML+=","+a[17]+"zł"		
+				document.getElementById("kierunkowskaz1").style.display="none";
+				document.getElementById("kierunkowskaz2").style.display="none";
+				lacznie.push(a[17])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==3){
+				document.getElementById("ptest2").innerHTML+=","+a[18]+"zł"		
+				document.getElementById("kierunkowskaz1").style.display="none";
+				document.getElementById("kierunkowskaz2").style.display="none";
+				lacznie.push(a[18])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==4){
+				document.getElementById("ptest2").innerHTML+=","+a[19]+"zł"		
+				document.getElementById("kierunkowskaz1").style.display="none";
+				document.getElementById("kierunkowskaz2").style.display="none";
+				lacznie.push(a[19])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+				}
+		}	
+	}	
+	if (result10==true)
+	{
+		if (t21=="block" || t22=="block")
+		{
+			if(z==1){
+				document.getElementById("ptest2").innerHTML+=","+a[12]+"zł"		
+				document.getElementById("swiatlot1").style.display="none";
+				document.getElementById("swiatlot2").style.display="none";
+				lacznie.push(a[12])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==2){
+				document.getElementById("ptest2").innerHTML+=","+a[13]+"zł"		
+				document.getElementById("swiatlot1").style.display="none";
+				document.getElementById("swiatlot2").style.display="none";
+				lacznie.push(a[13])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==3){
+				document.getElementById("ptest2").innerHTML+=","+a[14]+"zł"		
+				document.getElementById("swiatlot1").style.display="none";
+				document.getElementById("swiatlot2").style.display="none";
+				lacznie.push(a[14])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==4){
+				document.getElementById("ptest2").innerHTML+=","+a[15]+"zł"		
+				document.getElementById("swiatlot1").style.display="none";
+				document.getElementById("swiatlot2").style.display="none";
+				lacznie.push(a[15])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}
+		}	
+	}
+	if (result9==true)
+	{
+		if (t31=="block" || t32=="block")
+		{
+			if(z==1){
+				document.getElementById("ptest2").innerHTML+=","+a[16]+"zł"		
+				document.getElementById("kierunkowskaz3").style.display="none";
+				document.getElementById("kierunkowskaz4").style.display="none";
+				lacznie.push(a[16])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==2){
+				document.getElementById("ptest2").innerHTML+=","+a[17]+"zł"		
+				document.getElementById("kierunkowskaz3").style.display="none";
+				document.getElementById("kierunkowskaz4").style.display="none";
+				lacznie.push(a[17])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==3){
+				document.getElementById("ptest2").innerHTML+=","+a[18]+"zł"		
+				document.getElementById("kierunkowskaz3").style.display="none";
+				document.getElementById("kierunkowskaz4").style.display="none";
+				lacznie.push(a[18])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==4){
+				document.getElementById("ptest2").innerHTML+=","+a[19]+"zł"		
+				document.getElementById("kierunkowskaz3").style.display="none";
+				document.getElementById("kierunkowskaz4").style.display="none";
+				lacznie.push(a[19])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}
+		}	
+	}
+	//
+	if (result11==true && ps=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"	
+			document.getElementById("szybap").style.display="none";
+
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"		
+			document.getElementById("szybap").style.display="none";
+
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[73]+"zł"		
+			document.getElementById("szybap").style.display="none";
+			lacznie.push(a[73])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[74]+"zł"	
+			document.getElementById("szybap").style.display="none";
+			lacznie.push(a[74])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	//
+	if (result12==true && kier=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[40]+"zł"	
+			document.getElementById("kierownica").style.display="none";
+			lacznie.push(a[40])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[41]+"zł"		
+			document.getElementById("kierownica").style.display="none";
+			lacznie.push(a[41])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[42]+"zł"		
+			document.getElementById("kierownica").style.display="none";
+			lacznie.push(a[42])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[43]+"zł"	
+			document.getElementById("kierownica").style.display="none";
+			lacznie.push(a[43])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	//
+		if (result13==true && radio=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"
+			document.getElementById("radio").style.display="none";
+
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"	
+			document.getElementById("radio").style.display="none";
+
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[69]+"zł"		
+			document.getElementById("radio").style.display="none";
+			lacznie.push(a[69])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[70]+"zł"	
+			document.getElementById("radio").style.display="none";
+			lacznie.push(a[70])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	//
+		if (result14==true && hamu=="block"){
+		if(z==1){
+			document.getElementById("ptest2").innerHTML+=","+a[32]+"zł"	
+			document.getElementById("hamulec").style.display="none";
+			lacznie.push(a[32])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==2){
+			document.getElementById("ptest2").innerHTML+=","+a[33]+"zł"		
+			document.getElementById("hamulec").style.display="none";
+			lacznie.push(a[33])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==3){
+			document.getElementById("ptest2").innerHTML+=","+a[34]+"zł"		
+			document.getElementById("hamulec").style.display="none";
+			lacznie.push(a[34])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}if(z==4){
+			document.getElementById("ptest2").innerHTML+=","+a[35]+"zł"	
+			document.getElementById("hamulec").style.display="none";
+			lacznie.push(a[35])
+			//
+			document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  			return a + b;
+			});
+			//
+		}
+	}
+	//
+	if (result15==true)
+	{
+		if (dr11=="block" || dr12=="block")
+		{
+			if(z==1){
+				document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"	
+				document.getElementById("drzwi").style.display="none";
+				document.getElementById("drzwi2").style.display="none";
+
+			}if(z==2){
+				document.getElementById("ptest2").innerHTML+=","+"Usługa nie obejmuje wybranego rodzaju pojazdu"	
+				document.getElementById("drzwi").style.display="none";
+				document.getElementById("drzwi2").style.display="none";
+
+			}if(z==3){
+				document.getElementById("ptest2").innerHTML+=","+a[44]+"zł"		
+				document.getElementById("drzwi").style.display="none";
+				document.getElementById("drzwi2").style.display="none";
+				lacznie.push(a[44])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==4){
+				document.getElementById("ptest2").innerHTML+=","+a[45]+"zł"		
+				document.getElementById("drzwi").style.display="none";
+				document.getElementById("drzwi2").style.display="none";
+				lacznie.push(a[45])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}
+		}	
+	}
+	//
+	if (result16==true)
+	{
+		if (lus11=="block" || lus12=="block")
+		{
+			if(z==1){
+				document.getElementById("ptest2").innerHTML+=","+a[61]+"zł"		
+				document.getElementById("lusterko1").style.display="none";
+				document.getElementById("lusterko2").style.display="none";
+				lacznie.push(a[61])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==2){
+				document.getElementById("ptest2").innerHTML+=","+a[62]+"zł"		
+				document.getElementById("lusterko1").style.display="none";
+				document.getElementById("lusterko2").style.display="none";
+				lacznie.push(a[62])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==3){
+				document.getElementById("ptest2").innerHTML+=","+a[63]+"zł"		
+				document.getElementById("lusterko1").style.display="none";
+				document.getElementById("lusterko2").style.display="none";
+				lacznie.push(a[63])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}if(z==4){
+				document.getElementById("ptest2").innerHTML+=","+a[64]+"zł"		
+				document.getElementById("lusterko1").style.display="none";
+				document.getElementById("lusterko2").style.display="none";
+				lacznie.push(a[64])
+				//
+				document.getElementById("ptest3").innerHTML=lacznie.reduce(function(a, b) {
+  				return a + b;
+				});
+				//
+			}
+		}	
+	}
+	  localStorage.setItem("lacznie", ptest3.innerHTML);
+	  localStorage.setItem("uslugi", ptest.innerHTML);
+	  //
+	    const btn = document.querySelector('#btn');
+        const sb = document.querySelector('#id2');
+
+        btn.onclick = (e) => {
+            const selectedValues = [].filter
+                .call(sb.options, option => option.selected)
+                .map(option => option.text);
+            localStorage.setItem("rodzaj", selectedValues);
+        };
+        //
+  }
+})
+
+
+
+function wyczysckoszyk()
+{
+	//reset do 0 do wybierz
+	var dropDown = document.getElementById("id1");
+    dropDown.selectedIndex = 0;
+    var dropDown2 = document.getElementById("id2");
+    dropDown2.selectedIndex = 0;
+    //
+    lacznie=[]
+    document.getElementById("ptest3").innerHTML="0";
+    //
+    document.getElementById("o2").disabled = true;
+	document.getElementById("o3").disabled = true;
+	document.getElementById("o4").disabled = true;
+	document.getElementById("o5").disabled = true;
+	document.getElementById("o6").disabled = true;
+    //zdjecia i divy
+	document.getElementById("ptest").innerHTML="<b>Wybrane usługi:</b>";
+	document.getElementById("zdjcar").style.display = "none";
+	document.getElementById("zdjwheel").style.display = "none";
+	document.getElementById("zdjengine").style.display = "none";
+	document.getElementById("zdjinside").style.display = "none";
+	document.getElementById("zdjfront").style.display = "none";
+	document.getElementById("zdjback").style.display = "none";
+	document.getElementById("kolo1").style.display="none";
+	document.getElementById("kolo2").style.display="none";
+	document.getElementById("kolo3").style.display="none";
+	document.getElementById("silnik1").style.display="none";
+	document.getElementById("silnik2").style.display="none";
+	document.getElementById("silnik3").style.display="none";
+	document.getElementById("swiatlop1").style.display="none";
+	document.getElementById("swiatlop2").style.display="none";
+	document.getElementById("kierunkowskaz1").style.display="none";
+	document.getElementById("kierunkowskaz2").style.display="none";
+	document.getElementById("swiatlot1").style.display="none";
+	document.getElementById("swiatlot2").style.display="none";
+	document.getElementById("kierunkowskaz3").style.display="none";
+	document.getElementById("kierunkowskaz4").style.display="none";
+	document.getElementById("kokpit").style.display="none";
+	document.getElementById("szybap").style.display="none";
+	document.getElementById("kierownica").style.display="none";
+	document.getElementById("drzwi").style.display="none";
+	document.getElementById("drzwi2").style.display="none";
+	document.getElementById("lusterko1").style.display="none";
+	document.getElementById("lusterko2").style.display="none";
+	document.getElementById("hamulec").style.display="none";
+	document.getElementById("radio").style.display="none";
+	document.getElementById("maska").style.display="none";
+	//ceny
+	document.getElementById("ptest2").innerHTML="<b>Cena wybranych usług:</b>";
+	
+}
+	
+
+		
+</script>
+	<form method="post"action="{%url "summary"%}">
+					{% csrf_token%}
+    <input id="btn" type="submit" value="Zamów" />
+</form>
+	<button type="button" id="btn2" value="1" onclick="wyczysckoszyk()">Wyczyść koszyk</button>
+  {#<button type="button" id="btn3" value="1" onclick="usunusluge()">Usuń ostatnią usługę</button></div>#} 
+  
+{% endblock %}
+	</section>
+	<!-- -->
+	<section style="background-color: gray;padding-left:23%;padding-top:2%;padding-bottom:2%">
+		{%block footer %}
+		<img src="{% static "img/wrench2.png" %}" alt="wrench" width="50px" height="50px">
+		2022 &copy; Maurycy Gawriłow & Kamil Jagiełko
+		<img src="{% static "img/wrench.png" %}" alt="wrench" width="50px" height="50px">
+		{%endblock %}
+	</section>
+	</body>
+	
+</html>

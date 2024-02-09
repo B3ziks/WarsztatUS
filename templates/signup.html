@@ -1,0 +1,22 @@
+{%extends "base.html" %}
+{% load thumbnail %}
+
+{%block main%}
+<form method="post" action="" >
+	{% csrf_token %}
+	<h1>Rejestracja</h1>
+	<div>
+		<table class="table table-hover">
+		{{form}}
+		</table>
+	</div>
+	<div>
+		<button class="btn btn-primary btn-sm" type="submit">
+			<i class="fas fa-sign-in-alt"></i> Zarejestruj
+		</button>
+		<a href="{%url "home"%}" class="btn btn-primary btn-sm">
+			<i class="fas fa-arrow-circle-left"></i> Anuluj
+		</a>
+	</div>
+</form>	
+{%endblock%}

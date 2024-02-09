@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h3 class="title">Podsumowanie</h3>
+<div class="content">
+<table>
+<tr>
+<td><b>Imię: </b>{{ user.first_name }}</td>
+</tr>
+<tr>
+<td><b>Nazwisko: </b>{{ user.last_name }}</td
+</tr>
+<tr>
+<td><b>E-mail: </b>{{ user.email }}</td
+</tr>
+<tr>
+<td><b>Rodzaj pojazdu: </b><span id="rodzaj"></span></td
+</tr>
+<tr>
+<td><span id="uslugi"></span></td>
+</tr>
+<tr>
+<td><b>Lącznie do zapłaty: </b><span id="zaplata"></span>zł</td>
+</tr>
+<script>
+let uslugi =  localStorage.getItem("uslugi"); 
+let zaplata = localStorage.getItem("lacznie");
+let rodzaj = localStorage.getItem("rodzaj");
+document.getElementById("zaplata").innerHTML = zaplata
+document.getElementById("uslugi").innerHTML = uslugi
+document.getElementById("rodzaj").innerHTML = rodzaj
+</script>
+</table>
+     	<form method="post"action="{%url "confirm"%}">
+					{% csrf_token%}
+    <input type="submit" value="Zamów" />
+</form>
+</div>
+{% endblock %}

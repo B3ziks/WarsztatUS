@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+
+
+{%block main %}
+		<h1>Lista Dostępnych Usług {%include "snippet.html" %}</h1>
+		<div>
+			{% if user.is_authenticated %}
+				<i class="fas fa-user-check"></i>Zalogowany użytkownik: {{ user.username }}
+				<a href="{% url "logout" %}">
+				<i class="fas fa-sign-out"></i> Wyloguj
+				</a>
+			{% else %}
+				<a href="{% url "login" %}">
+				<i class="fas fa-sign-in"></i> Zaloguj
+				</a>
+				<div class="mt-1 small">
+				Nie masz konta? <a href="{% url "signup" %}">Zarejestruj się!</a>
+			{% endif %}
+		</div>	
+		<div>
+		<br>
+			<form method="post" action="">
+				{% csrf_token%}
+				{{form}} <!-- .as_p .as_ul -->
+				<!-- <label for="mySubmit" title="szukaj" class="btn btn-primary"><i class="fas fa-search"></i></label> -->
+				<button type="submit" id="mySubmit" class="btn btn-primary">
+					<i class="fas fa-search">
+					</i>
+				</button>
+			</form>
+			    <a href="{%url "home"%}"  class="btn btn-primary btn-sm">
+				<i class="fas fa-arrow-circle-left"></i> Powrót na stronę główną </a>
+				{% if user.is_authenticated %}
+				{% if perms.pricing.add_pricing %}
+					<a href="{% url "pricing-create" %}"class="btn btn-primary btn-sm" title="Podgląd"><i class="fas fa-user-plus"></i> Dodaj Usługę</a>
+				{% endif %}
+				{% endif %}
+				{% if user.is_authenticated %}
+			    <a href="{%url "personalize"%}"  class="btn btn-primary btn-sm">
+				<i class="fas fa-car"></i> Personalizuj Zamówienie </a>
+				{% endif %}
+		</div>
+    	<table class="table table-striped">
+    		<thead>
+    			<tr>
+    				<th class="col-3 col-lg-3">Zdjęcie</th>
+    				<th class="col-2 col-lg-2">Nazwa Usługi</th>
+    				<th class="col-2 col-lg-1">Numer Usługi</th>
+    				<th class="col-2 col-lg-2">Rodzaj Pojazdu</th>
+    				<th class="col-3 col-lg-2">Cena (zł)</th>
+    				<th class="col-1 col-lg-2">Szczegóły</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			{% for pricing in pricings %}
+    			<tr>
+    				<td>{% if pricing.image %}
+    					{% thumbnail pricing.image "100x100" quality=96 crop="center" as small %}
+    					<img src="{{small.url}}">
+    					{% endthumbnail %}
+    					{% else %}
+    					<img src="{% static "img/default_avatar.png" %}" alt="anonymous" height="100px" width="100px">
+    					{% endif %}</td>
+    				<td>{{pricing.service_name}}</td>
+    				<td>{{pricing.service_number}}</td>
+    				<td>{{pricing.vehicle}}</td>
+    				<td>{{pricing.price}}</td>
+    				<td>
+    					<div class="btn-group">
+    						<a href="{%url "pricing-details" pricing.id%}" class="btn btn-primary" title="Podgląd"><i class="fas fa-eye"></i></a>
+    						{% if user.is_authenticated %} 
+    							{% if perms.pricing.change_pricing %}
+    							<a href="{% url "pricing-update" pricing.id%}" class="btn btn-primary" title="Edytuj"><i class="fas fa-edit"></i></a>
+    							{% endif %}
+    							{% if perms.pricing.delete_pricing %}
+    							<a href="{%url "pricing-delete" pricing.id%}" class="btn btn-primary del" title="Usuń"><i class="far fa-trash-alt"></i></a>
+    							{% endif %}
+    						{% endif %}
+    					</div>
+    				</td>
+    			</tr>
+    		{% endfor %}
+    		</tbody>
+    		</table>
+
+{% endblock %}

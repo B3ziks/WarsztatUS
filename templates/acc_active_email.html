@@ -1,0 +1,6 @@
+{% autoescape off %}  
+Witaj {{ user.username }},  
+
+Udało się założyć Twoje konto Warsztat SerwisUS. Aby ukończyć rejestrację, musimy tylko zweryfikować Twój adres e-mail. Kliknij poniższy link:
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}  
+{% endautoescape %}  
